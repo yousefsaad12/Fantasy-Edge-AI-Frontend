@@ -1,0 +1,15 @@
+/* styles.css */
+.gradient-text {
+    background: linear-gradient(to right, #d946ef, #e11d74); /* Gradient colors */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 200% auto; /* Adjust for smooth animation */
+    background-position: 0% 50%;
+    transition: background-position 0.5s ease-in-out;
+  }
+  
+  .gradient-text:hover {
+    background-position: 100% 50%;
+  }
+  
