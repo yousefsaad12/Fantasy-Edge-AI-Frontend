@@ -24,7 +24,7 @@ export default function Navbar() {
     </div>
 
     <div className="flex-none">
-        <button className="bg-[#37003c] sm:w-24 sm:h-8 md:w-28 md:h-8 lg:w-32 lg:h-8 flex items-center justify-center rounded-3xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#6d0044] before:to-[#a7006c] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-white text-xs sm:text-sm md:text-base">
+        <button className="bg-[#37003c] sm:w-full sm:h-8 md:w-28 md:h-8 lg:w-32 lg:h-8 flex items-center justify-center rounded-3xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#6d0044] before:to-[#a7006c] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-white text-xs sm:text-sm md:text-base">
             Login
         </button>
     </div>
