@@ -2,7 +2,7 @@ import React from 'react'
 import '../components/Navbar.css'
 export default function Navbar() {
     return (
-       < nav className="bg-gradient-to-r from-[#37003c] to-[#da0043] p-3 sm:p-4 flex items-center justify-between w-full max-w-full overflow-hidden">
+       < nav className="p-3 sm:p-4 flex items-center justify-between w-full max-w-full overflow-hidden">
     <div className="flex-none">
         <a
             className="relative font-extrabold px-2 py-1 sm:px-2 sm:py-2 md:px-4 md:py-3.5 lg:px-6 lg:py-4 group bg-gradient-to-r from-[#37003c] to-[#da0043] hover:bg-gradient-to-r hover:from-[#da0043] hover:to-[#37003c] text-white transition-all ease-out duration-300 rounded-3xl overflow-hidden"
@@ -17,7 +17,7 @@ export default function Navbar() {
         </a>
     </div>
 
-    <div className="  flex-grow flex items-center justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-white">
+    <div className="  flex-grow flex items-center justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-[#37003c]">
         <a href="#" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Home</a>
         <a href="#" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Recommendation</a>
         <a href="#" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Analyze</a>
