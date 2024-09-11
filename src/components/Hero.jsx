@@ -23,13 +23,13 @@ export default function Hero() {
             wrapper="h1"
             speed={50}
             repeat={4}
-            className='inline-block bg-gradient-to-br from-pink-100 to-pink-600 bg-clip-text text-transparent text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-wide leading-relaxed mb-2'
+            className='inline-block bg-gradient-to-br from-[#37003c] to-[#da0043] bg-clip-text text-transparent text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-wide leading-relaxed mb-2 pb-5'
           />
               
           
 
           {/* Description */}
-          <p className="text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed pt-10 pb-10">
+          <p className="text-[#37003c] text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed pt-10 pb-10">
             Transform your fantasy football experience with Fantasy Edge AI. 
             Our advanced analytics and real-time predictions help you make informed decisions, 
             optimize your lineup, and build your dream team. Whether you’re a seasoned player or just getting started, 
