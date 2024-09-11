@@ -5,7 +5,7 @@ import Review from "./components/Review";
 
 export default function App() {
   return(
-    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-slate-100 to-red-50">
+    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-gray-50 to-slate-50">
    
       <Navbar />
       <Hero />

@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 export default function Hero() {
   return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center justify-between pt-10 pr-10 pl-10 mt-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center justify-between pt-10 pr-10 pl-10 mt-20 md:mt-32  lg:mt-32 ">
 
         {/* Text Section */}
         <div className="text-center md:text-left space-y-6">
@@ -38,7 +38,7 @@ export default function Hero() {
           </p>
 
           {/* Button */}
-          <button className="bg-[#37003c] rounded-3xl w-32 h-12 lg:text-2xl lg:font-extrabold text-gray-200 lg:w-80 lg:h-14 md:w-1/2 md:h-12 sm:w-full sm:h-12 transform transition duration-300 hover:scale-105 hover:bg-[#a7006c] ">
+          <button className="bg-[#37003c] rounded-full w-32 h-12 lg:text-2xl lg:font-extrabold text-gray-200 lg:w-80 lg:h-14 md:w-1/2 md:h-12 sm:w-full sm:h-12 transform transition duration-300 hover:scale-105 hover:bg-[#a7006c] ">
             Start Now <i className="fa-solid fa-futbol"></i>
           </button>
         </div>
