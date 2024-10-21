@@ -1,16 +1,21 @@
-import Card from "./components/Card";
-import Hero from "./components/Hero";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import Review from "./components/Review";
+import Recommendation from "./pages/Recommendation";
+
 
 export default function App() {
   return(
-    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-gray-50 to-slate-50">
+    <Router className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-gray-50 to-slate-50">
    
-      <Navbar />
-      <Hero />
-      <Review/>
+        <Navbar/>
+
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+        <Route path="/recommendation" element={<Recommendation />} />
+      </Routes>
      
-    </div>
+    </Router>
   );
 }

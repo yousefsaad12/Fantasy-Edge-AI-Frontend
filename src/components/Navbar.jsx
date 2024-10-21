@@ -1,5 +1,7 @@
 import React from 'react'
 import '../components/Navbar.css'
+import { Link } from 'react-router-dom';
+
 export default function Navbar() {
     return (
        < nav className="p-3 sm:p-4 flex items-center justify-between w-full max-w-full overflow-hidden">
@@ -18,9 +20,9 @@ export default function Navbar() {
     </div>
 
     <div className="  flex-grow flex items-center justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-[#37003c]">
-        <a href="#" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Home</a>
-        <a href="#" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Recommendation</a>
-        <a href="#" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Analyze</a>
+        <Link to="/" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Home</Link>
+        <Link to="/recommendation" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Recommendation</Link>
+        <Link to="#" className=" menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Analyze</Link>
     </div>
 
     <div className="flex-none">
