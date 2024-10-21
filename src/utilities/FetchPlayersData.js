@@ -1,6 +1,5 @@
-// src/utils/fetchPlayersData.js
 
-const fetchPlayersData = async () => {
+const FetchPlayersData = async () => {
     try {
       const response = await fetch(process.env.FETCHING_PLAYER_API); // Replace with your API endpoint
       if (!response.ok) {
@@ -13,5 +12,5 @@ const fetchPlayersData = async () => {
     }
   };
   
-  export default fetchPlayersData;
+  export default FetchPlayersData;
   
