@@ -1,7 +1,6 @@
-// src/pages/Recommendation.jsx
-
 import React, { useEffect, useState } from 'react';
 import FetchPlayersData from '../utilities/FetchPlayersData'; // Adjust the import path as needed
+import PlayerTable from '../components/PlayerTable';
 
 const Recommendation = () => {
   const [players, setPlayers] = useState([]);
@@ -10,7 +9,7 @@ const Recommendation = () => {
   useEffect(() => {
     const getPlayersData = async () => {
       try {
-        const data = await fetchPlayersData();
+        const data = await FetchPlayersData();
         setPlayers(data); // Adjust based on your data structure
       } catch (err) {
         setError(err.message);
@@ -25,19 +24,16 @@ const Recommendation = () => {
     return <div>Error: {error}</div>;
   }
 
-  return (
-    <div>
-      <h1>Player Recommendations</h1>
-      {/* Render your player data here */}
-      {players.length > 0 ? (
-        players.map((player) => (
-          <div key={player.id}>{player.name}</div> // Adjust based on your data structure
-        ))
-      ) : (
-        <div>No players found.</div>
-      )}
-    </div>
-  );
+ return ( 
+    <div className='from-gray-50 to-slate-50'>
+    {/* Render the PlayerTable component */}
+    {players.length > 0 ? (
+      <PlayerTable playersData={players} /> // Pass players data to PlayerTable as a prop
+    ) : (
+      <div>No players found.</div>
+    )}
+  </div>
+);
 };
 
 export default Recommendation;

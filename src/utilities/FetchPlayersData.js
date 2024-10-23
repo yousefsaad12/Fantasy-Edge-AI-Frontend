@@ -1,16 +1,18 @@
-
 const FetchPlayersData = async () => {
-    try {
-      const response = await fetch(process.env.FETCHING_PLAYER_API); // Replace with your API endpoint
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-      const data = await response.json();
-      return data; // Adjust based on your data structure
-    } catch (error) {
-      throw new Error(`Error fetching players data: ${error.message}`);
+  try {
+    const response = await fetch('http://localhost:5235/api/player/playersdata/train', {
+      method: 'GET',
+      cache: 'no-cache' // Force the request to skip the cache
+    });
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
     }
-  };
-  
-  export default FetchPlayersData;
-  
+    const data = await response.json();
+    console.log(data)
+    return data;
+  } catch (error) {
+    throw new Error(`Error fetching players data: ${error.message}`);
+  }
+};
+
+export default FetchPlayersData
