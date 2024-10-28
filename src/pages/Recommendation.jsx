@@ -29,9 +29,7 @@ const Recommendation = () => {
     {/* Render the PlayerTable component */}
     {players.length > 0 ? (
       <PlayerTable playersData={players} /> // Pass players data to PlayerTable as a prop
-    ) : (
-      <div>No players found.</div>
-    )}
+    ): <></>}
   </div>
 );
 };
