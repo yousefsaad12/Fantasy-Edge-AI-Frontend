@@ -46,7 +46,7 @@ export default function Hero() {
       {/* Image Section */}
       <div className="flex items-center justify-center m-4">
         <img 
-          src='../utilities/HeroImag.webp' 
+          src='./utilities/HeroImag.webp' 
           alt="Fantasy Football AI" 
           className="w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl object-cover rounded-3xl border border-gray-300 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105" 
         />

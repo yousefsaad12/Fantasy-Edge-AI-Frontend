@@ -1,42 +1,66 @@
-import React, { useState } from 'react';
-import FeatureItem from './FeatureItem';
+import React from "react";
 
 export default function Features() {
   const featuresData = [
     {
-      title: 'Donec porta enim vel',
-      description: 'Pellentesque feugiat ante at nisl efficitur, in mollis orci scelerisque. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
+      title: "Predictive Analytics",
+      date: "2024",
+      location: "Fantasy Premier Edge",
+      description:
+        "Leverages AI algorithms to analyze player performance and predict outcomes.",
     },
     {
-      title: 'Aliquam sit amet nunc ut',
-      description: 'Morbi vulputate aliquam libero non dictum. Aliquam sit amet nunc ut diam aliquet tincidunt nec nec dui. Donec mollis turpis eget egestas sodales.',
+      title: "Advanced Visualization",
+      date: "2024",
+      location: "Fantasy Premier Edge",
+      description:
+        "Offers rich visualizations for better understanding of player stats and trends.",
     },
     {
-      title: 'Pellentesque habitant morbi',
-      description: 'Suspendisse tincidunt, arcu nec faucibus efficitur, justo velit consectetur nisl, sit amet condimentum lacus orci nec purus. Mauris quis quam suscipit, vehicula felis id, vehicula enim.',
+      title: "Real-time Updates",
+      date: "2024",
+      location: "Fantasy Premier Edge",
+      description:
+        "Provides live updates on player performances and game events.",
+    },
+    {
+      title: "Community Engagement",
+      date: "2024",
+      location: "Fantasy Premier Edge",
+      description:
+        "Engages users through community features, including forums and chat.",
+    },
+    {
+      title: "Gamification",
+      date: "2024",
+      location: "Fantasy Premier Edge",
+      description:
+        "Incorporates gamified elements to enhance user experience and retention.",
     },
   ];
 
-  const [visibleCount, setVisibleCount] = useState(0);
-
   return (
-    <section className="dark:bg-gray-100 dark:text-gray-800">
-    <div className="container max-w-5xl px-0 py-12 mx-auto">
-      <div className="relative space-y-0">
-        {featuresData.map((item, index) => (
-          <FeatureItem
-            key={index}
-            title={item.title}
-            description={item.description}
-            index={index}
-            onScrollIn={() => setVisibleCount((prev) => Math.max(prev, index + 1))} // Update visible count
-          />
-        ))}
+    <div className="mt-64 mb-64">
+      <div className="py-8 md:py-16 w-11/12 lg:w-10/12 xl:w-1200 m-auto">
+        <div className="space-y-16">
+          {featuresData.map((feature, index) => (
+            <div
+              key={index}
+              className={`flex items-center justify-center md:justify-start md:flex-row ${
+                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              }`}
+            >
+              <div className="w-full md:w-1/3 space-y-4 text-center md:text-left">
+                <h3 className="font-medium text-2xl">{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+              {index < featuresData.length - 1 && ( // Add vertical line except after the last feature
+                <div className="hidden md:block w-px bg-gray-300 h-16 mx-4" />
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  </section>
   );
 }
-
-
-
