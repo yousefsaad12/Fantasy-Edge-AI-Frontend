@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 export default function Hero() {
   return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center justify-between pt-10 pr-10 pl-10 mt-20 md:mt-32  lg:mt-32 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center justify-between pt-10 pr-10 pl-10 mt-20 md:mt-32  lg:mt-32  mb-40">
 
         {/* Text Section */}
         <div className="text-center md:text-left space-y-6">
@@ -46,7 +46,7 @@ export default function Hero() {
       {/* Image Section */}
       <div className="flex items-center justify-center m-4">
         <img 
-          src='./utilities/HeroImag.webp' 
+          src='../assets/Screenshot from 2024-10-23 22-17-28.png'
           alt="Fantasy Football AI" 
           className="w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl object-cover rounded-3xl border border-gray-300 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105" 
         />

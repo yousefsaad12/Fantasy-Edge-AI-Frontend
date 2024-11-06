@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Card from './Card';
-import reviews from '../assets/Data'; // Ensure this path is correct
+import reviews from '../assets/ReviewData'; // Ensure this path is correct
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -18,7 +18,7 @@ export default function Review() {
   }, [controls, inView]);
 
   return (
-    <div className="mt-64 mb-64">
+    <div className="lg:mt-64  sm:mb-10 md:mb-5 md:mt-40 sm:mt-10">
       <section className="max-w-5xl mx-auto w-full px-10 py-10">
         <div className="flex items-center justify-center flex-col gap-y-2 py-5 w-full max-w-5xl mb-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#37003c] mb-3">
