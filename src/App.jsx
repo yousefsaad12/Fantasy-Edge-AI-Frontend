@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Recommendation from "./pages/Recommendation";
+import Footer from "./components/Footer";
 
 
 export default function App() {
@@ -15,7 +16,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/recommendation" element={<Recommendation />} />
       </Routes>
-     
+      <Footer/>
     </Router>
   );
 }
