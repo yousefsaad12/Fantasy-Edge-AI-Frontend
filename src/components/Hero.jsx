@@ -13,9 +13,7 @@ export default function Hero() {
           
           <TypeAnimation
             sequence={[
-              // Same substring at the start will only be typed out once, initially
-              // wait 1s before replacing "Mice" with "Hamsters"
-
+      
               1000,
               'Build Your Dream Team with Fantasy Edge AI Powered by Smart AI Predictions.',
               1000
@@ -45,11 +43,7 @@ export default function Hero() {
 
       {/* Image Section */}
       <div className="flex items-center justify-center m-4">
-        <img 
-          src='../assets/Screenshot from 2024-10-23 22-17-28.png'
-          alt="Fantasy Football AI" 
-          className="w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl object-cover rounded-3xl border border-gray-300 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105" 
-        />
+      
       </div>
     </div>
 

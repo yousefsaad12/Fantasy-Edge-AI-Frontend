@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Recommendation from "./pages/Recommendation";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
 
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
 
         <Route path="/" element={<Home />} />
         <Route path="/recommendation" element={<Recommendation />} />
+        <Route path="/login" element={<Login/>} />
       </Routes>
       <Footer/>
     </Router>
