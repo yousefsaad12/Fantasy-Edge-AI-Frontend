@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-export default function Navbar() {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+export default function Navbar({ user, setUser }) {
+    const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
+    const handleLogout = () => {
+        setUser(null); // Clear the user state
+        localStorage.removeItem('user'); // Remove the user data from localStorage
+        localStorage.removeItem('jwtToken'); // Remove the JWT token from localStorage
+    };
+
+    console.log(user)
     return (
         <nav className="p-3 sm:p-4 flex items-center justify-between w-full max-w-full overflow-hidden">
             {/* Logo */}
@@ -33,29 +40,39 @@ export default function Navbar() {
                 <Link to="#" className="menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Analyze</Link>
             </div>
 
-            {/* Login Button (visible on all screens) */}
+            {/* User Info or Login Button */}
             <div className="flex items-center space-x-2">
-                <a href="/Login" className="bg-[#37003c] w-20 sm:w-24 h-8 flex items-center justify-center rounded-3xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#6d0044] before:to-[#a7006c] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-white text-xs sm:text-sm">
-                    Login
-                </a>
-
+                {user ? (
+                    <div className="flex items-center space-x-2">
+                        <span className="text-sm text-[#37003c]">Hello, {user.userName}</span>
+                        <button
+                            onClick={handleLogout}
+                            className="text-sm text-[#37003c] hover:text-gray-300"
+                        >
+                            Logout
+                        </button>
+                    </div>
+                ) : (
+                    <Link
+                        to="/login"
+                        className="bg-[#37003c] w-20 sm:w-24 h-8 flex items-center justify-center rounded-3xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#6d0044] before:to-[#a7006c] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-white text-xs sm:text-sm"
+                    >
+                        Login
+                    </Link>
+                )}
 
                 {/* Menu Icon with rotation animation */}
                 <button
-                    className={`text-[#37003c] text-lg md:hidden focus:outline-none transform transition-transform duration-300 ${
-                        isDropdownOpen ? 'rotate-90' : ''
-                    }`}
+                    className={`text-[#37003c] text-lg md:hidden focus:outline-none transform transition-transform duration-300 ${isDropdownOpen ? 'rotate-90' : ''}`}
                     onClick={toggleDropdown}
                 >
-                    {isDropdownOpen ? <FaTimes /> : <FaBars />} {/* Toggle between hamburger and X icon */}
+                    {isDropdownOpen ? <FaTimes /> : <FaBars />}
                 </button>
             </div>
 
             {/* Dropdown Menu with scale and fade-in animation */}
             <div
-                className={`absolute top-16 right-0 bg-white shadow-lg rounded-lg w-40 md:hidden transform transition-all duration-300 ease-out ${
-                    isDropdownOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
-                }`}
+                className={`absolute top-16 right-0 bg-white shadow-lg rounded-lg w-40 md:hidden transform transition-all duration-300 ease-out ${isDropdownOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
             >
                 <Link to="/" className="block px-4 py-2 text-sm text-[#37003c] hover:bg-gray-100">Home</Link>
                 <Link to="/recommendation" className="block px-4 py-2 text-sm text-[#37003c] hover:bg-gray-100">Recommendation</Link>

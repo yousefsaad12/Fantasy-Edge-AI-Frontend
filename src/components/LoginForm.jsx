@@ -1,10 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function LoginForm({ email, setEmail, password, setPassword, handleSubmit, error }) {
+export default function LoginForm({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  handleSubmit,
+  error,
+  loading, // Added loading state prop
+}) {
   return (
     <div className="m-7">
       <form onSubmit={handleSubmit}>
+        {/* Email input */}
         <motion.div
           className="mb-6"
           initial={{ opacity: 0, x: -50 }}
@@ -22,8 +31,11 @@ export default function LoginForm({ email, setEmail, password, setPassword, hand
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 text-gray-800 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#37003c] focus:border-[#37003c]"
+            required
           />
         </motion.div>
+
+        {/* Password input */}
         <motion.div
           className="mb-6"
           initial={{ opacity: 0, x: 50 }}
@@ -34,7 +46,11 @@ export default function LoginForm({ email, setEmail, password, setPassword, hand
             <label htmlFor="password" className="text-sm text-gray-600">
               Password
             </label>
-            <a href="#!" className="text-sm text-[#37003c] hover:underline focus:outline-none">
+            {/* Forgot password link */}
+            <a
+              href="#!"
+              className="text-sm text-[#37003c] hover:underline focus:outline-none"
+            >
               Forgot password?
             </a>
           </div>
@@ -46,8 +62,11 @@ export default function LoginForm({ email, setEmail, password, setPassword, hand
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full px-4 py-2 text-gray-800 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#37003c] focus:border-[#37003c]"
+            required
           />
         </motion.div>
+
+        {/* Error message */}
         {error && (
           <motion.div
             className="mb-6 text-red-500 text-sm"
@@ -58,6 +77,8 @@ export default function LoginForm({ email, setEmail, password, setPassword, hand
             {error}
           </motion.div>
         )}
+
+        {/* Submit button */}
         <motion.div
           className="mb-6"
           initial={{ scale: 0.9, opacity: 0 }}
@@ -67,13 +88,19 @@ export default function LoginForm({ email, setEmail, password, setPassword, hand
           <button
             type="submit"
             className="w-full bg-[#37003c] rounded-full px-4 py-2 text-white font-semibold shadow-md transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none"
+            disabled={loading} // Disable button when loading
           >
-            Login
+            {loading ? 'Logging in...' : 'Login'} {/* Change text when loading */}
           </button>
         </motion.div>
+
+        {/* Sign up link */}
         <p className="text-sm text-center text-gray-500">
-          Don't have an account yet?{" "}
-          <a href="#!" className="text-[#37003c] font-medium hover:underline focus:outline-none">
+          Don't have an account yet?{' '}
+          <a
+            href="#!"
+            className="text-[#37003c] font-medium hover:underline focus:outline-none"
+          >
             Sign up
           </a>.
         </p>

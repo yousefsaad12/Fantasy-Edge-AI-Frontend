@@ -4,21 +4,35 @@ import Navbar from "./components/Navbar";
 import Recommendation from "./pages/Recommendation";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
-
+import React, { useState, useEffect } from 'react';
 
 export default function App() {
-  return(
-    <Router className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-gray-50 to-slate-50">
-   
-        <Navbar/>
+  const [user, setUser] = useState(null);
 
-      <Routes>
+  // Load user from localStorage on initial load (if any)
+  useEffect(() => {
+    const savedUser = JSON.parse(localStorage.getItem('user'));
+    if (savedUser) {
+      setUser(savedUser);
+    }
+  }, []);
 
-        <Route path="/" element={<Home />} />
-        <Route path="/recommendation" element={<Recommendation />} />
-        <Route path="/login" element={<Login/>} />
-      </Routes>
-      <Footer/>
+  return (
+    <Router>
+     
+        {/* Navbar with user information */}
+        <Navbar user={user} setUser={setUser} />
+
+          {/* Routes for different pages */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/recommendation" element={<Recommendation />} />
+            <Route path="/login" element={<Login setUser={setUser} />} />
+          </Routes>
+       
+
+        {/* Footer */}
+        <Footer />
     </Router>
   );
 }
