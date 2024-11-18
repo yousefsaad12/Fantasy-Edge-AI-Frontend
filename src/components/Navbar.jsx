@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar({ user, setUser }) {
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+    const navigate = useNavigate();  // Hook to navigate programmatically
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -13,9 +14,10 @@ export default function Navbar({ user, setUser }) {
         setUser(null); // Clear the user state
         localStorage.removeItem('user'); // Remove the user data from localStorage
         localStorage.removeItem('jwtToken'); // Remove the JWT token from localStorage
+        navigate('/'); // Redirect to login page
     };
 
-    console.log(user)
+    console.log(user);
     return (
         <nav className="p-3 sm:p-4 flex items-center justify-between w-full max-w-full overflow-hidden">
             {/* Logo */}
@@ -34,7 +36,7 @@ export default function Navbar({ user, setUser }) {
             </div>
 
             {/* Center Links (visible only on medium and larger screens) */}
-            <div className="hidden md:flex flex-grow items-center justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-[#37003c]">
+            <div className="hidden md:flex flex-grow items-end justify-end pr-14 space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-[#37003c]">
                 <Link to="/" className="menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Home</Link>
                 <Link to="/recommendation" className="menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Recommendation</Link>
                 <Link to="#" className="menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Analyze</Link>

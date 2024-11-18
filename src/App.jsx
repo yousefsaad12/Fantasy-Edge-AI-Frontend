@@ -5,6 +5,7 @@ import Recommendation from "./pages/Recommendation";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import React, { useState, useEffect } from 'react';
+import SignUp from "./pages/SignUp";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/recommendation" element={<Recommendation />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
+            <Route path="/signUp" element={<SignUp setUser={setUser} />} />
           </Routes>
        
 

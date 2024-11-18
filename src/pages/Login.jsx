@@ -1,37 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import LoginForm from '../components/LoginForm'; // Adjust path if necessary
-import { loginUser } from '../utilities/auth'; // Assuming this is where your login API call is
+import useLogin from '../hooks/useLogin'; // Import the custom hook
 
 export default function Login({ setUser }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(''); // Reset error state on each new submission
+  const { email, setEmail, password, setPassword, error, loading, handleSubmit } = useLogin();
 
-    try {
-      const result = await loginUser(email, password); // Assuming loginUser makes the API call
+  const handleFormSubmit = async (e) => {
+    const result = await handleSubmit(e);
 
-      setLoading(false);
-
-      if (result.success) {
-        // If login is successful, update the user state and navigate
-        setUser(result); // Store user data
-        localStorage.setItem('user', JSON.stringify(result)); // Store in localStorage for persistence
-        navigate('/'); // Navigate to the home page
-      } else {
-        setError(result.message || 'An error occurred during login'); // Handle login failure
-      }
-    } catch (err) {
-      setLoading(false);
-      setError('Something went wrong. Please try again later.');
+    if (result.success) {
+      // If login is successful, update the user state and navigate
+      setUser(result.user); // Store user data
+      localStorage.setItem('user', JSON.stringify(result.user)); // Store in localStorage for persistence
+      navigate('/'); // Navigate to the home page
+    } else {
+      // Handle failure
+      console.error(result.message);
+      setError(result.message); // Set the error message if login fails
     }
   };
 
@@ -57,7 +46,7 @@ export default function Login({ setUser }) {
             setEmail={setEmail}
             password={password}
             setPassword={setPassword}
-            handleSubmit={handleSubmit}
+            handleSubmit={handleFormSubmit}
             error={error}
             loading={loading} // Pass loading state
           />

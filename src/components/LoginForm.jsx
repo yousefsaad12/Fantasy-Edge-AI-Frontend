@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // Ensure Link is imported
 
 export default function LoginForm({
   email,
@@ -8,7 +9,7 @@ export default function LoginForm({
   setPassword,
   handleSubmit,
   error,
-  loading, // Added loading state prop
+  loading, // Include the loading state prop
 }) {
   return (
     <div className="m-7">
@@ -97,13 +98,14 @@ export default function LoginForm({
         {/* Sign up link */}
         <p className="text-sm text-center text-gray-500">
           Don't have an account yet?{' '}
-          <a
-            href="#!"
-            className="text-[#37003c] font-medium hover:underline focus:outline-none"
+          <Link
+            to="/signUp"
+            className="text-[#37003c] font-semibold hover:text-[#6d0044] hover:underline transition-all duration-300 ease-in-out"
           >
-            Sign up
-          </a>.
+            Sign Up
+          </Link>
         </p>
+
       </form>
     </div>
   );

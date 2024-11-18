@@ -5,7 +5,7 @@ export async function loginUser(email, password) {
   };
 
   try {
-    const response = await fetch('http://localhost:5235/api/user/login', {
+    const response = await fetch(import.meta.env.VITE_LOGIN, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export async function loginUser(email, password) {
     }
 
     const data = await response.json();
-    console.log('Login response:', data); // Check if the response contains the token
+    console.log('Login response:', data); // Log the data here
 
     const token = data.token; // Assuming token is in 'token' field
     localStorage.setItem('jwtToken', token);

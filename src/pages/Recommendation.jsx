@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import FetchPlayersData from '../utilities/FetchPlayersData'; // Adjust the import path as needed
+import FetchPlayersData from '../services/FetchPlayersData'; 
 import PlayerTable from '../components/PlayerTable';
 
 const Recommendation = () => {
   const [players, setPlayers] = useState([]);
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
     const getPlayersData = async () => {
       try {
@@ -24,12 +24,15 @@ const Recommendation = () => {
     return <div>Error: {error}</div>;
   }
 
+  
+
  return ( 
     <div className='from-gray-50 to-slate-50'>
     {/* Render the PlayerTable component */}
     {players.length > 0 ? (
       <PlayerTable playersData={players} /> // Pass players data to PlayerTable as a prop
     ): <></>}
+    
   </div>
 );
 };
