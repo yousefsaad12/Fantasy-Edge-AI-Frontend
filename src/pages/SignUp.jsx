@@ -1,24 +1,40 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import SignUpForm from '../components/SignUpForm'; // Adjust the import path if needed
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import SignUpForm from '../components/SignUpForm'; // Import the SignUpForm component
+import { signup } from '../services/signIn'; // Import the signup function from sprite.js
 
-export default function SignUp() {
-  
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+export default function SignUpPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
   const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState(''); // State to manage the API error
+  const navigate = useNavigate(); // Initialize the navigate function
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setApiError(''); // Reset the error before submission
 
-    setTimeout(() => {
+    try {
+      const response = await signup(formData.email, formData.password, formData.name);
+
+      // Handle success: navigate to home page
       setLoading(false);
-      setError(null);
-      
-    }, 2000);
+      console.log('Signup successful:', response);
+      navigate('/'); // Redirect to the home page
+    } catch (error) {
+      setApiError(error.message); // If there's an error, set the API error message
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,15 +55,11 @@ export default function SignUp() {
 
           {/* Pass props to SignUpForm */}
           <SignUpForm
-            name={name}
-            setName={setName}
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
+            formData={formData}
+            handleChange={handleChange}
             handleSubmit={handleSubmit}
-            error={error}
-            loading={loading} // Pass loading state
+            loading={loading}
+            apiError={apiError} // Pass apiError prop to SignUpForm
           />
         </motion.div>
       </div>

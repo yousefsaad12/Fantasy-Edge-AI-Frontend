@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import validatePasswordStrength from "../utilities/passwordValidator"; // Adjust the path to your validator
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons from react-icons
+import validatePasswordStrength from "../utilities/passwordValidator";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function SignUpForm({
-  name,
-  setName,
-  email,
-  setEmail,
-  password,
-  setPassword,
-  confirmPassword,
-  setConfirmPassword,
+  formData, // receive formData as a prop
+  handleChange, // receive handleChange as a prop
   handleSubmit,
   error,
-  loading, // Loading state for sign-up
+  loading,
+  apiError, // Receive the API error prop
 }) {
   const [passwordError, setPasswordError] = useState('');
   const [passwordChecks, setPasswordChecks] = useState([]);
@@ -23,7 +18,7 @@ export default function SignUpForm({
   // Handle password change and validation
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
-    setPassword(newPassword);
+    handleChange(e);  // Use handleChange to update the password
     const checks = validatePasswordStrength(newPassword);
     setPasswordChecks(checks); // Set validation checks
   };
@@ -51,8 +46,8 @@ export default function SignUpForm({
             name="name"
             id="name"
             placeholder="Your Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={formData.name}  // Use formData here
+            onChange={handleChange}  // Handle change with handleChange
             className="w-full px-4 py-2 text-gray-800 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#37003c] focus:border-[#37003c]"
             required
           />
@@ -73,8 +68,8 @@ export default function SignUpForm({
             name="email"
             id="email"
             placeholder="you@company.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}  // Use formData here
+            onChange={handleChange}  // Handle change with handleChange
             className="w-full px-4 py-2 text-gray-800 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#37003c] focus:border-[#37003c]"
             required
           />
@@ -96,8 +91,8 @@ export default function SignUpForm({
               name="password"
               id="password"
               placeholder="Your Password"
-              value={password}
-              onChange={handlePasswordChange}
+              value={formData.password}  // Use formData here
+              onChange={handlePasswordChange}  // Handle password change
               className="w-full px-4 py-2 text-gray-800 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#37003c] focus:border-[#37003c]"
               required
             />
@@ -129,45 +124,29 @@ export default function SignUpForm({
           </div>
         </motion.div>
 
-        {/* Error message */}
-        {error && (
+        {/* API Error Message */}
+        {apiError && (
           <motion.div
             className="mb-6 text-red-500 text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {error}
+            {apiError}
           </motion.div>
         )}
 
         {/* Submit button */}
-        <motion.div
-          className="mb-6"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.6 }}
+        <motion.button
+          type="submit"
+          disabled={loading}
+          className="w-full py-2 mt-4 bg-[#37003c] text-white rounded-3xl shadow-md hover:bg-[#a7006c] focus:outline-none focus:ring-2 focus:ring-[#37003c]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <button
-            type="submit"
-            className="w-full bg-[#37003c] rounded-full px-4 py-2 text-white font-semibold shadow-md transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none"
-            disabled={loading} // Disable button when loading
-          >
-            {loading ? 'Signing up...' : 'Sign Up'} {/* Change text when loading */}
-          </button>
-        </motion.div>
-
-        {/* Login link */}
-        <p className="text-sm text-center text-gray-500">
-          Already have an account?{' '}
-          <a
-            href="#!" // replace with actual link to login
-            className="text-[#37003c] font-medium hover:underline focus:outline-none"
-          >
-            Log in
-          </a>
-          .
-        </p>
+          {loading ? 'Loading...' : 'Create Account'}
+        </motion.button>
       </form>
     </div>
   );
