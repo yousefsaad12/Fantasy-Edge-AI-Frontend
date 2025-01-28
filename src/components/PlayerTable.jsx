@@ -42,7 +42,7 @@ const PlayerTable = ({ playersData }) => {
       {/* H1 Header */}
         <div className="flex justify-center mt-20">
           <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold mb-6 sm:mb-8 md:mb-10 lg:mb-12 p-3 bg-gradient-to-br bg-clip-text text-transparent from-[#37003c] to-[#da0043] text-center">
-              Our Top 5 Fantasy Picks for the Upcoming GameWeek
+              Some Information For The Upcoming GameWeek
           </h1>
       </div>
 
@@ -59,24 +59,22 @@ const PlayerTable = ({ playersData }) => {
             <thead>
               <tr className="bg-gradient-to-tr from-[#37003c] to-[#da0043] text-white rounded-t-3xl">
                 <th className="p-2 sm:p-4 text-left font-semibold min-w-[100px] sm:min-w-[150px]">Player Name</th>
+                <th className="p-2 sm:p-4 text-left font-semibold min-w-[100px] sm:min-w-[150px]">Web Name</th>
                 <th className="p-2 sm:p-4 text-left font-semibold min-w-[80px] sm:min-w-[100px]">Position</th>
                 <th className="p-2 sm:p-4 text-left font-semibold min-w-[120px] sm:min-w-[150px]">Team</th>
-                <th className="p-2 sm:p-4 text-left font-semibold min-w-[80px] sm:min-w-[100px]">Points</th>
-                {Array.from({ length: 16 }).map((_, idx) => (
-                  <th key={idx} className="p-2 sm:p-4 text-left font-semibold min-w-[100px] sm:min-w-[120px]">Additional {idx + 1}</th>
-                ))}
+                <th className="p-2 sm:p-4 text-left font-semibold min-w-[80px] sm:min-w-[100px]">News</th>
+                <th className="p-2 sm:p-4 text-left font-semibold min-w-[80px] sm:min-w-[100px]">Chance Playing Next Round</th>              
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {currentPlayers.map((player, index) => (
                 <tr key={index} className="hover:bg-gray-100 transition-colors duration-200">
-                  <td className="p-2 sm:p-4">{player.firstName}</td>
+                  <td className="p-2 sm:p-4">{player.firstName + ' ' +  player.secondName}</td>
+                  <td className="p-2 sm:p-4">{player.webName}</td>
                   <td className="p-2 sm:p-4">{player.position}</td>
                   <td className="p-2 sm:p-4">{player.team}</td>
-                  <td className="p-2 sm:p-4">{player.points}</td>
-                  {Array.from({ length: 16 }).map((_, idx) => (
-                    <td key={idx} className="p-2 sm:p-4">Data {idx + 1}</td>
-                  ))}
+                  <td className="p-2 sm:p-4">{player.news}</td>
+                  <td className="p-2 sm:p-4">{player.chancePlayingNextRound == null ? '0%' : player.chancePlayingNextRound + '%'}</td>
                 </tr>
               ))}
             </tbody>

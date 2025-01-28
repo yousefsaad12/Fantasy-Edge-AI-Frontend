@@ -32,7 +32,7 @@ export default function SignUpPage() {
       console.log('Signup successful:', response);
       navigate('/'); // Redirect to the home page
     } catch (error) {
-      setApiError(error.message); // If there's an error, set the API error message
+      setApiError(error.message || "Something went wrong!"); // If there's an error, set the API error message
       setLoading(false);
     }
   };

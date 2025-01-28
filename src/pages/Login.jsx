@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import LoginForm from '../components/LoginForm'; // Adjust path if necessary
@@ -8,19 +8,28 @@ export default function Login({ setUser }) {
   const navigate = useNavigate();
 
   const { email, setEmail, password, setPassword, error, loading, handleSubmit } = useLogin();
+  
+  const [loginError, setLoginError] = useState(null); // Local state for login error handling
 
   const handleFormSubmit = async (e) => {
+    e.preventDefault();
     const result = await handleSubmit(e);
 
     if (result.success) {
       // If login is successful, update the user state and navigate
       setUser(result.user); // Store user data
       localStorage.setItem('user', JSON.stringify(result.user)); // Store in localStorage for persistence
+
+      // Optionally store token in localStorage as well for authorization
+      if (result.token) {
+        localStorage.setItem('authToken', result.token); // Store the token for future requests
+      }
+
       navigate('/'); // Navigate to the home page
     } else {
-      // Handle failure
+      // Handle failure (e.g., incorrect credentials)
+      setLoginError(result.message); // Update error state
       console.error(result.message);
-      setError(result.message); // Set the error message if login fails
     }
   };
 
@@ -47,9 +56,17 @@ export default function Login({ setUser }) {
             password={password}
             setPassword={setPassword}
             handleSubmit={handleFormSubmit}
-            error={error}
             loading={loading} // Pass loading state
           />
+
+          {/* Show error message if exists */}
+          {loginError && (
+            <div className="mt-4 text-red-500 text-center">
+              <p>{loginError}</p>
+            </div>
+          )}
+
+          {/* Optional: You could add a link for "Forgot password?" here */}
         </motion.div>
       </div>
     </div>

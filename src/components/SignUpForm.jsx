@@ -7,7 +7,6 @@ export default function SignUpForm({
   formData, // receive formData as a prop
   handleChange, // receive handleChange as a prop
   handleSubmit,
-  error,
   loading,
   apiError, // Receive the API error prop
 }) {
@@ -39,7 +38,7 @@ export default function SignUpForm({
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <label htmlFor="name" className="block mb-2 text-sm text-gray-600">
-            Name
+            UserName (Without Space)
           </label>
           <input
             type="text"
@@ -132,7 +131,7 @@ export default function SignUpForm({
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {apiError}
+            {apiError} {/* Display the actual API error message */}
           </motion.div>
         )}
 

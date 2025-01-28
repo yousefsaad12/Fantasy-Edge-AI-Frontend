@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import React, { useState, useEffect } from 'react';
 import SignUp from "./pages/SignUp";
+import Analyze from "./pages/Analyze"
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/recommendation" element={<Recommendation />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/signUp" element={<SignUp setUser={setUser} />} />
+            <Route path="/analyze" element={<Analyze />}/>
           </Routes>
        
 

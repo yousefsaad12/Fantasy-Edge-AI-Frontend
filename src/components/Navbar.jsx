@@ -39,7 +39,7 @@ export default function Navbar({ user, setUser }) {
             <div className="hidden md:flex flex-grow items-end justify-end pr-14 space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-[#37003c]">
                 <Link to="/" className="menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Home</Link>
                 <Link to="/recommendation" className="menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Recommendation</Link>
-                <Link to="#" className="menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Analyze</Link>
+                <Link to="/analyze" className="menu__link text-xs sm:text-sm md:text-base lg:text-lg hover:text-gray-300">Analyze</Link>
             </div>
 
             {/* User Info or Login Button */}
@@ -78,7 +78,7 @@ export default function Navbar({ user, setUser }) {
             >
                 <Link to="/" className="block px-4 py-2 text-sm text-[#37003c] hover:bg-gray-100">Home</Link>
                 <Link to="/recommendation" className="block px-4 py-2 text-sm text-[#37003c] hover:bg-gray-100">Recommendation</Link>
-                <Link to="#" className="block px-4 py-2 text-sm text-[#37003c] hover:bg-gray-100">Analyze</Link>
+                <Link to="/analyze" className="block px-4 py-2 text-sm text-[#37003c] hover:bg-gray-100">Analyze</Link>
             </div>
         </nav>
     );
