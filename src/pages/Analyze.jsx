@@ -96,9 +96,9 @@ const Analyze = () => {
             <p><strong>Predicted Points:</strong> {predictions.predictedPoints}</p>
             <p><strong>Percentage Change:</strong> 
               {predictions.trend == 'Increasing' ? (
-                <span className="text-green-500">↑ {predictions.percentageChange}%</span>
+                <span className="text-green-500">↑ {predictions.percentageChange}</span>
               ) : (
-                <span className="text-red-500">↓ {predictions.percentageChange}%</span>
+                <span className="text-red-500">↓ {predictions.percentageChange}</span>
               )}
             </p>
             <p><strong>Trend:</strong> {predictions.trend}</p>
