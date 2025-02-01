@@ -95,7 +95,7 @@ const Analyze = () => {
           <div className="mt-4">
             <p><strong>Predicted Points:</strong> {predictions.predictedPoints}</p>
             <p><strong>Percentage Change:</strong> 
-              {predictions.percentageChange > 0 ? (
+              {predictions.trend == 'Increasing' ? (
                 <span className="text-green-500">↑ {predictions.percentageChange}%</span>
               ) : (
                 <span className="text-red-500">↓ {predictions.percentageChange}%</span>
